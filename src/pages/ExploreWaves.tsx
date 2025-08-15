@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Float, Text3D, Environment, Sparkles, Center, Html } from '@react-three/drei'
+import { OrbitControls, Float, Environment, Sparkles, Html } from '@react-three/drei'
 import { useRef, useState, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -214,17 +214,21 @@ function Interactive3DWave({ amplitude, frequency, speed, isPlaying, particles }
         </Float>
       )}
       
-      <Center top>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.5}
-          height={0.1}
-          position={[0, 3, 0]}
-        >
-          Wave Explorer
-          <meshNormalMaterial />
-        </Text3D>
-      </Center>
+      {/* HTML overlay for title */}
+      <Html
+        position={[0, 4, 0]}
+        center
+        style={{
+          color: '#0ea5e9',
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          pointerEvents: 'none',
+          textShadow: '0 0 10px rgba(14, 165, 233, 0.5)'
+        }}
+      >
+        Wave Explorer
+      </Html>
     </group>
   )
 }
